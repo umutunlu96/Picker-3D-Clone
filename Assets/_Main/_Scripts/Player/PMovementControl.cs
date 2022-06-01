@@ -8,31 +8,33 @@ public class PMovementControl : MonoBehaviour
     [SerializeField] private float horizontalSpeed;
     [SerializeField] private float verticalSpeed;
 
-    private PlayerInput _playerInput;
-    private InputAction _moveAction;
-    private Rigidbody _rb;
-
+    private PlayerInput playerInput;
+    private InputAction inputAction;
+    private Rigidbody rigidBody;
 
     private void Awake()
     {
-
-        _playerInput = GetComponent<PlayerInput>();
-        _moveAction = _playerInput.actions["Movement"];
-        _rb = GetComponent<Rigidbody>();
+        playerInput = GetComponent<PlayerInput>();
+        rigidBody = GetComponent<Rigidbody>();
+        inputAction = playerInput.actions["Movement"];
     }
 
     void FixedUpdate()
     {
-        Vector2 input = _moveAction.ReadValue<Vector2>();
-        _rb.MovePosition(transform.position + new Vector3(input.x * Time.deltaTime, 0, verticalSpeed * Time.deltaTime));
+        Move();
+    }
+    
+    private void Move()
+    {
+        rigidBody.MovePosition(transform.position + MovementInput());
     }
 
-    public void setVerticalSpeed(float newVerticalSpeed)
+    private Vector3 MovementInput()
     {
-        verticalSpeed = newVerticalSpeed;
-    }
-    public float getVerticalSpeed()
-    {
-        return verticalSpeed;
+        Vector2 input = inputAction.ReadValue<Vector2>();
+        float hor = input.x * verticalSpeed * Time.fixedDeltaTime;
+        float ver = horizontalSpeed * Time.fixedDeltaTime;
+
+        return new Vector3(hor, 0, ver);
     }
 }
