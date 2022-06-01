@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23d40abb6db1ffd4da3e7b31c6feb386, type: 3}
+  m_Name: Sphere
+  m_EditorClassIdentifier: 
+  collectableName: Sphere
+  collectableMass: 1
+  collectableScale: {x: 0.1, y: 0.1, z: 0.1}
+  collectableMaterial:
+  - {fileID: 2100000, guid: 475c41c0a38b5d04aabb7b7f689cbabf, type: 2}
+  - {fileID: 2100000, guid: 93a69b4f69e154a4db6827dc063214ec, type: 2}
+  - {fileID: 2100000, guid: 0c46a9d044b79a94690ff95b961a5007, type: 2}
