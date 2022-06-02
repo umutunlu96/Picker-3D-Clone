@@ -6,8 +6,10 @@ public class Player : MonoBehaviour
 {
     public static Player instance;
 
-    public PMovementControl pMovementControl;
-    public PushCollectables pushCollectables;
+    [SerializeField] private PMovementControl pMovementControl;
+    [SerializeField] private PushCollectables pushCollectables;
+    [SerializeField] private GameObject leftWing;
+    [SerializeField] private GameObject rightWing;
 
 
     private void Awake()
@@ -19,8 +21,6 @@ public class Player : MonoBehaviour
         }
         #endregion
     }
-
-
 
     public void Push()
     {
@@ -37,17 +37,33 @@ public class Player : MonoBehaviour
         pMovementControl.SetVerticalSpeed(1.5f);
     }
 
+    public void EnableWings()
+    {
+        leftWing.SetActive(true);
+        rightWing.SetActive(true);
+    }
+
+    public void DisableWings()
+    {
+        leftWing.SetActive(false);
+        rightWing.SetActive(false);
+    }
+
     private void OnEnable()
     {
+        CollectTriggerSpot.OnPlayerEnterCollectArea += DisableWings;
         CollectTriggerSpot.OnPlayerEnterCollectArea += StopPlayer;
         CollectTriggerSpot.OnPlayerEnterCollectArea += Push;
         Barrier.OnBarrierrUp += MovePlayer;
+        WingUpgradeTrigger.OnPlayerTakeWingUpgrade += EnableWings;
     }
 
     private void OnDisable()
     {
+        CollectTriggerSpot.OnPlayerEnterCollectArea -= DisableWings;
         CollectTriggerSpot.OnPlayerEnterCollectArea -= StopPlayer;
         CollectTriggerSpot.OnPlayerEnterCollectArea -= Push;
         Barrier.OnBarrierrUp -= MovePlayer;
+        WingUpgradeTrigger.OnPlayerTakeWingUpgrade -= EnableWings;
     }
 }
