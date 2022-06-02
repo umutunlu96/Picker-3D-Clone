@@ -303,7 +303,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4742296633594223513
 Transform:
   m_ObjectHideFlags: 0
@@ -487,8 +487,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4742296634085401702}
   - component: {fileID: 4742296634085401703}
+  - component: {fileID: 2018240981}
   m_Layer: 0
-  m_Name: PlayerTriggerArea
+  m_Name: PushCollectables
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -502,7 +503,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4742296634085401701}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.375}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4742296634309266203}
@@ -516,11 +517,23 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4742296634085401701}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.3, z: 0.7}
-  m_Center: {x: 0, y: 0.1, z: -0.05}
+  m_Size: {x: 0.55, y: 0.3, z: 0.1}
+  m_Center: {x: -0.05, y: 0.1, z: 0}
+--- !u!114 &2018240981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4742296634085401701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efe5e32d7d95e3844bed436f4850bdec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4742296634309266202
 GameObject:
   m_ObjectHideFlags: 0
@@ -532,11 +545,12 @@ GameObject:
   - component: {fileID: 4742296634309266203}
   - component: {fileID: 4742296634309266197}
   - component: {fileID: 4742296634309266196}
-  - component: {fileID: 4742296634309266199}
+  - component: {fileID: 286301931854617285}
   - component: {fileID: 4742296634309266198}
+  - component: {fileID: 4742296634309266199}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -586,8 +600,36 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.770455, y: 0.7550399, z: 0.7}
+  m_Center: {x: -0.030514538, y: 0.32751992, z: -0.050000012}
+--- !u!114 &286301931854617285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4742296634309266202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a82e82f6c15e23b40bec8fa2308c35be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pMovementControl: {fileID: 4742296634309266198}
+  pushCollectables: {fileID: 2018240981}
+--- !u!114 &4742296634309266198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4742296634309266202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 575fe338506a0eb429cbc255e448eb13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  horizontalSpeed: 1
+  verticalSpeed: 0
 --- !u!114 &4742296634309266199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -618,20 +660,6 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &4742296634309266198
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4742296634309266202}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 575fe338506a0eb429cbc255e448eb13, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  horizontalSpeed: 1
-  verticalSpeed: 1
 --- !u!1 &4742296634681548534
 GameObject:
   m_ObjectHideFlags: 0
@@ -875,7 +903,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4742296634761905492
 Transform:
   m_ObjectHideFlags: 0

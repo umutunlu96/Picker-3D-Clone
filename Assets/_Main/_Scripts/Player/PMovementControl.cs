@@ -32,9 +32,14 @@ public class PMovementControl : MonoBehaviour
     private Vector3 MovementInput()
     {
         Vector2 input = inputAction.ReadValue<Vector2>();
-        float hor = input.x * verticalSpeed * Time.fixedDeltaTime;
-        float ver = horizontalSpeed * Time.fixedDeltaTime;
+        float hor = input.x * horizontalSpeed * Time.fixedDeltaTime;
+        float ver = verticalSpeed * Time.fixedDeltaTime;
 
         return new Vector3(hor, 0, ver);
+    }
+
+    public void SetVerticalSpeed(float vSpeed)
+    {
+        verticalSpeed = vSpeed;
     }
 }
