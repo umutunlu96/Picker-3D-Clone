@@ -55,8 +55,9 @@ public class GatherArea : MonoBehaviour
             barrier.MoveBarrierUp();
 
             UiManager.instance.SetProggress(indexOfArea);
-        }
 
+            GenerateLevel();
+        }
         else
         {
             GameManager.instance.LoseLevel();
@@ -65,7 +66,21 @@ public class GatherArea : MonoBehaviour
         checkCollectedCount = false;
     }
 
-
+    private void GenerateLevel()
+    {
+        switch (indexOfArea)
+        {
+            case 1:
+                ObjectPooler.instance.GenerateLevel1();
+                break;
+            case 2:
+                ObjectPooler.instance.GenerateLevel2();
+                break;
+            case 3:
+                ObjectPooler.instance.GenerateLevel3();
+                break;
+        }
+    }
 
     private IEnumerator Delay(float delay)
     {
