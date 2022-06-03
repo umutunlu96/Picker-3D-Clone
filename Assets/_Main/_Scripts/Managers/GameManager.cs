@@ -36,4 +36,31 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+
+    private void LevelGenerator(int levelIndex)
+    {
+        switch (levelIndex)
+        {
+            case 1:
+                ObjectPooler.instance.GenerateLevel1();
+                break;
+            case 2:
+                ObjectPooler.instance.GenerateLevel2();
+                break;
+            case 3:
+                ObjectPooler.instance.GenerateLevel3();
+                LevelComplete();
+                break;
+        }
+    }
+
+    private void OnEnable()
+    {
+        GenerateLevelTrigger.OnGenerateLevel += LevelGenerator;
+    }
+
+    private void OnDisable()
+    {
+        GenerateLevelTrigger.OnGenerateLevel -= LevelGenerator;
+    }
 }

@@ -13,6 +13,8 @@ public class GatherArea : MonoBehaviour
     [Header("Referances")]
     [SerializeField] OriginalRoadUp originalRoadUp;
     [SerializeField] Barrier barrier;
+    [SerializeField] ObjectPooler objectPooler;
+
     public TextMeshProUGUI collectText;
 
     private int collectedObjects = 0;
@@ -42,6 +44,12 @@ public class GatherArea : MonoBehaviour
         SetCollectText();
     }
 
+    private void ResetCollectText()
+    {
+        collectedObjects = 0;
+        SetCollectText();
+    }
+
     private void CheckPlayerFailOrPass()
     {
         StartCoroutine(Delay(2));
@@ -56,7 +64,10 @@ public class GatherArea : MonoBehaviour
 
             UiManager.instance.SetProggress(indexOfArea);
 
-            GenerateLevel();
+            StartCoroutine(Delay(1));
+
+
+
         }
         else
         {
@@ -65,25 +76,30 @@ public class GatherArea : MonoBehaviour
 
         checkCollectedCount = false;
     }
-
-    private void GenerateLevel()
+    
+    private void TriggerOn()
     {
-        switch (indexOfArea)
-        {
-            case 1:
-                ObjectPooler.instance.GenerateLevel1();
-                break;
-            case 2:
-                ObjectPooler.instance.GenerateLevel2();
-                break;
-            case 3:
-                ObjectPooler.instance.GenerateLevel3();
-                break;
-        }
+
+    }
+
+    private void ResetLevel(int a)
+    {
+        ResetCollectText();
+        originalRoadUp.BoxTriggerOn();
     }
 
     private IEnumerator Delay(float delay)
     {
         yield return new WaitForSeconds(delay);
+    }
+
+    private void OnEnable()
+    {
+        GenerateLevelTrigger.OnGenerateLevel += ResetLevel;
+    }
+
+    private void OnDisable()
+    {
+        GenerateLevelTrigger.OnGenerateLevel += ResetLevel;
     }
 }

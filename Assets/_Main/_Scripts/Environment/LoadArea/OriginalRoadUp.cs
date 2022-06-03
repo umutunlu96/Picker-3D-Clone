@@ -7,6 +7,11 @@ public class OriginalRoadUp : MonoBehaviour
 {
     [SerializeField] GameObject baseObject;
 
+    public void BoxTriggerOn()
+    {
+        baseObject.GetComponent<BoxCollider>().isTrigger = true;
+    }
+
     public void MoveUpwards()
     {
         transform.DOLocalMoveY(0, 2).OnComplete(() => baseObject.GetComponent<BoxCollider>().isTrigger = false);

@@ -25,7 +25,7 @@ public class ObjectPooler : MonoBehaviour
     [SerializeField] private GameObject[] Barrier3;
 
     [Header("Collectables of Level-1")]
-    [SerializeField] private GameObject[] Collectables1;
+    [SerializeField] public GameObject[] Collectables1;
 
     [Header("Collectables of Level-2")]
     [SerializeField] private GameObject WingUpgrade;
@@ -118,6 +118,7 @@ public class ObjectPooler : MonoBehaviour
 
         OriginalRoad2.transform.localPosition = originalRoad2T;
 
+        WingUpgrade.SetActive(true);
         WingUpgrade.transform.localPosition = wingUpgradeT;
 
         for (int i = 0; i < Barrier2.Length; i++)
