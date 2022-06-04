@@ -9,7 +9,6 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
     public static int levelIndex = 1;
 
-    public static Action OnLevelComplete;
     public static Action OnLevelLose;
 
 
@@ -23,12 +22,10 @@ public class GameManager : MonoBehaviour
     {
         levelIndex++;
         UiManager.instance.SetLevelIndexText();
-        OnLevelComplete?.Invoke();
     }
 
     public void LoseLevel()
     {
-        print("Level Lose");
         OnLevelLose?.Invoke();
     }
 

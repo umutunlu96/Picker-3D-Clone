@@ -46,7 +46,7 @@ public class UiManager : MonoBehaviour
     {
         ResetProgress();
 
-        int index = progressCount % 4;
+        int index = progressCount % 3;
 
         for (int i = 0; i < index; i++)
         {

@@ -13,9 +13,4 @@ public class WingRotate : MonoBehaviour
         int RotationSide = rotateLeft ? -1 : 1;
         transform.DORotate(new Vector3(0, 360 * RotationSide, 0), rotateSpeed, RotateMode.FastBeyond360).SetLoops(-1, LoopType.Restart).SetEase(Ease.Linear);
     }
-
-    private void OnDisable()
-    {
-        DOTween.Kill(transform);
-    }
 }

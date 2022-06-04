@@ -13,7 +13,6 @@ public class GatherArea : MonoBehaviour
     [Header("Referances")]
     [SerializeField] OriginalRoadUp originalRoadUp;
     [SerializeField] Barrier barrier;
-    [SerializeField] ObjectPooler objectPooler;
 
     public TextMeshProUGUI collectText;
 
@@ -63,11 +62,6 @@ public class GatherArea : MonoBehaviour
             barrier.MoveBarrierUp();
 
             UiManager.instance.SetProggress(indexOfArea);
-
-            StartCoroutine(Delay(1));
-
-
-
         }
         else
         {
@@ -75,11 +69,6 @@ public class GatherArea : MonoBehaviour
         }
 
         checkCollectedCount = false;
-    }
-    
-    private void TriggerOn()
-    {
-
     }
 
     private void ResetLevel(int a)
