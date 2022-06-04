@@ -520,8 +520,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.55, y: 0.3, z: 0.1}
-  m_Center: {x: -0.05, y: 0.1, z: 0}
+  m_Size: {x: 0.6923388, y: 0.3, z: 0.1}
+  m_Center: {x: -0.045198426, y: 0.099999994, z: 0}
 --- !u!114 &2018240981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -547,6 +547,7 @@ GameObject:
   - component: {fileID: 4742296634309266196}
   - component: {fileID: 286301931854617285}
   - component: {fileID: 4742296634309266198}
+  - component: {fileID: 4601239252566642069}
   - component: {fileID: 4742296634309266199}
   m_Layer: 0
   m_Name: Player
@@ -631,7 +632,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   horizontalSpeed: 1
-  verticalSpeed: 0
+  verticalSpeed: 1.5
+--- !u!114 &4601239252566642069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4742296634309266202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2d2fc2acd2efaa4b908ce958d3585ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  small: {fileID: 11400000, guid: dc620d95639cdab43a4a6842bd2637f4, type: 2}
+  medium: {fileID: 11400000, guid: aabeb4610dd259a4face6901373e2e08, type: 2}
+  big: {fileID: 11400000, guid: 1b5312ad78f1cc24a868497335ae042d, type: 2}
 --- !u!114 &4742296634309266199
 MonoBehaviour:
   m_ObjectHideFlags: 0
