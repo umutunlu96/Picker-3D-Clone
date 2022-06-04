@@ -14,15 +14,20 @@ public class UiManager : MonoBehaviour
             instance = this;
     }
 
+    [Header("Referances")]
     [SerializeField] GameObject PreGame;
     [SerializeField] GameObject InGame;
-    [SerializeField] GameObject WinGame;
     [SerializeField] GameObject LoseGame;
+    
+    [Header("In Game")]
     [SerializeField] TextMeshProUGUI currentLevelIndex;
     [SerializeField] TextMeshProUGUI nextLevelIndex;
     [SerializeField] Image[] progress;
-    [SerializeField] TextMeshProUGUI scoreText;
+    [SerializeField] TextMeshProUGUI currentScoreText;
 
+    [Header("EndLevelScoreText")]
+    [SerializeField] TextMeshProUGUI scoreText;
+    [SerializeField] TextMeshProUGUI highScoreText;
 
     private void Start()
     {
@@ -60,7 +65,7 @@ public class UiManager : MonoBehaviour
 
     private void ScoreUpdate()
     {
-        scoreText.text = ScoreManager.score.ToString();
+        currentScoreText.text = ScoreManager.score.ToString();
     }
 
     private void OpenLoseGameUi()
@@ -68,11 +73,27 @@ public class UiManager : MonoBehaviour
         LoseGame.SetActive(true);
     }
 
+    private void ScoreText()
+    {
+        scoreText.gameObject.SetActive(true);
+        scoreText.text = "Your Score is: " + ScoreManager.score.ToString() + "\nYour Best Score is: " + PlayerPrefs.GetInt("HighScore").ToString();
+        print("score");
+    }
+
+    private void HighScoreText()
+    {
+        highScoreText.gameObject.SetActive(true);
+        highScoreText.text = "You beat yourself! New High score is: " + PlayerPrefs.GetInt("HighScore").ToString();
+        print("Highscore");
+    }
+
     private void OnEnable()
     {
         ProgressManager.OnProgressIncrease += SetProggress;
         ScoreManager.OnScoreUpdate += ScoreUpdate;
         GameManager.OnLevelLose += OpenLoseGameUi;
+        ScoreManager.OnHighScoreBeaten += HighScoreText;
+        ScoreManager.OnHighScoreNotBeaten += ScoreText;
     }
 
     private void OnDisable()
@@ -80,5 +101,7 @@ public class UiManager : MonoBehaviour
         ProgressManager.OnProgressIncrease -= SetProggress;
         ScoreManager.OnScoreUpdate -= ScoreUpdate;
         GameManager.OnLevelLose -= OpenLoseGameUi;
+        ScoreManager.OnHighScoreBeaten -= HighScoreText;
+        ScoreManager.OnHighScoreNotBeaten -= ScoreText;
     }
 }
