@@ -23,6 +23,7 @@ public class UiManager : MonoBehaviour
     [SerializeField] Image[] progress;
     [SerializeField] TextMeshProUGUI scoreText;
 
+
     private void Start()
     {
         SetLevelIndexText();
@@ -46,12 +47,15 @@ public class UiManager : MonoBehaviour
     {
         ResetProgress();
 
-        int index = progressCount % 3;
-
-        for (int i = 0; i < index; i++)
+        for (int i = 0; i < progressCount; i++)
         {
             progress[i].gameObject.SetActive(true);
         }
+    }
+
+    public void ProgressBarResetOnNextLevel()
+    {
+        ResetProgress();
     }
 
     private void ScoreUpdate()

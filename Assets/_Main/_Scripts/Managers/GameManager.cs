@@ -11,7 +11,6 @@ public class GameManager : MonoBehaviour
 
     public static Action OnLevelLose;
 
-
     private void Awake()
     {
         if (instance == null)
@@ -22,6 +21,7 @@ public class GameManager : MonoBehaviour
     {
         levelIndex++;
         UiManager.instance.SetLevelIndexText();
+        UiManager.instance.ProgressBarResetOnNextLevel();
     }
 
     public void LoseLevel()
