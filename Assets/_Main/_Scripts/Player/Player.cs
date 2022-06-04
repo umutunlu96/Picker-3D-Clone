@@ -56,6 +56,7 @@ public class Player : MonoBehaviour
         CollectTriggerSpot.OnPlayerEnterCollectArea += Push;
         Barrier.OnBarrierrUp += MovePlayer;
         WingUpgradeTrigger.OnPlayerTakeWingUpgrade += EnableWings;
+        GameManager.OnLevelLose += StopPlayer;
     }
 
     private void OnDisable()
@@ -65,5 +66,6 @@ public class Player : MonoBehaviour
         CollectTriggerSpot.OnPlayerEnterCollectArea -= Push;
         Barrier.OnBarrierrUp -= MovePlayer;
         WingUpgradeTrigger.OnPlayerTakeWingUpgrade -= EnableWings;
+        GameManager.OnLevelLose -= StopPlayer;
     }
 }

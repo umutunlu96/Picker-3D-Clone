@@ -6,10 +6,17 @@ using DG.Tweening;
 public class WingUpgradeAnimation : MonoBehaviour
 {
     [SerializeField] float rotateSpeed;
+    private bool canRotate = true;
 
-    private void OnEnable()
+    private void Update()
     {
-        transform.DORotate(new Vector3(0, 0, 360), rotateSpeed, RotateMode.FastBeyond360).SetLoops(-1, LoopType.Restart).SetEase(Ease.Linear);
+        if (canRotate)
+            Rotate();
+    }
+
+    private void Rotate()
+    {
+        transform.Rotate(Vector3.forward * Time.deltaTime * rotateSpeed);
     }
 
     private void OnTriggerEnter(Collider target)
@@ -18,5 +25,15 @@ public class WingUpgradeAnimation : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
+    }
+
+    private void OnEnable()
+    {
+        canRotate = true;
+    }
+
+    private void OnDisable()
+    {
+        canRotate = false;
     }
 }

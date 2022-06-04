@@ -7,10 +7,28 @@ public class WingRotate : MonoBehaviour
 {
     [SerializeField] bool rotateLeft;
     [SerializeField] float rotateSpeed;
+    private bool canRotate = false;
+    private int rotationSide = 1;
+
+    private void Update()
+    {
+        if (canRotate)
+            Rotate();
+    }
+
+    private void Rotate()
+    {
+        transform.Rotate(Vector3.up * rotationSide * Time.deltaTime * rotateSpeed);
+    }
 
     private void OnEnable()
     {
-        int RotationSide = rotateLeft ? -1 : 1;
-        transform.DORotate(new Vector3(0, 360 * RotationSide, 0), rotateSpeed, RotateMode.FastBeyond360).SetLoops(-1, LoopType.Restart).SetEase(Ease.Linear);
+        canRotate = true;
+        rotationSide = rotateLeft ? -1 : 1;
+    }
+
+    private void OnDisable()
+    {
+        canRotate = false;
     }
 }

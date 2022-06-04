@@ -63,16 +63,22 @@ public class UiManager : MonoBehaviour
         scoreText.text = ScoreManager.score.ToString();
     }
 
+    private void OpenLoseGameUi()
+    {
+        LoseGame.SetActive(true);
+    }
 
     private void OnEnable()
     {
         ProgressManager.OnProgressIncrease += SetProggress;
         ScoreManager.OnScoreUpdate += ScoreUpdate;
+        GameManager.OnLevelLose += OpenLoseGameUi;
     }
 
     private void OnDisable()
     {
         ProgressManager.OnProgressIncrease -= SetProggress;
         ScoreManager.OnScoreUpdate -= ScoreUpdate;
+        GameManager.OnLevelLose -= OpenLoseGameUi;
     }
 }

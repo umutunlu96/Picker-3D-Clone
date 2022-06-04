@@ -88,6 +88,6 @@ public class GatherArea : MonoBehaviour
 
     private void OnDisable()
     {
-        GenerateLevelTrigger.OnGenerateLevel += ResetLevel;
+        GenerateLevelTrigger.OnGenerateLevel -= ResetLevel;
     }
 }
