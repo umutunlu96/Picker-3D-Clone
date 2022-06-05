@@ -381,7 +381,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotateLeft: 0
-  rotateSpeed: 1
+  rotateSpeed: 360
 --- !u!1 &4742296633795492997
 GameObject:
   m_ObjectHideFlags: 0
@@ -632,7 +632,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   horizontalSpeed: 1
-  verticalSpeed: 1.5
+  verticalSpeed: 0
 --- !u!114 &4601239252566642069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -999,7 +999,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotateLeft: 1
-  rotateSpeed: 1
+  rotateSpeed: 360
 --- !u!1 &4742296634919712923
 GameObject:
   m_ObjectHideFlags: 0

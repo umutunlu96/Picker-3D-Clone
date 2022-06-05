@@ -26,6 +26,7 @@ public class ObjectPooler : MonoBehaviour
 
     [Header("Collectables of Level-1")]
     [SerializeField] public GameObject[] Collectables1;
+    [SerializeField] public GameObject Tunnel;
 
     [Header("Collectables of Level-2")]
     [SerializeField] private GameObject WingUpgrade;
@@ -84,6 +85,9 @@ public class ObjectPooler : MonoBehaviour
         Level1.transform.position = level1T + new Vector3(0, 0, distance);
 
         OriginalRoad1.transform.localPosition = originalRoad1T;
+
+        if (!Tunnel.activeInHierarchy)
+            Tunnel.SetActive(true);
 
         for (int i = 0; i < Barrier1.Length; i++)
         {
