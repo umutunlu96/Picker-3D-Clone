@@ -77,14 +77,12 @@ public class UiManager : MonoBehaviour
     {
         scoreText.gameObject.SetActive(true);
         scoreText.text = "Your Score is: " + ScoreManager.score.ToString() + "\nYour Best Score is: " + PlayerPrefs.GetInt("HighScore").ToString();
-        print("score");
     }
 
     private void HighScoreText()
     {
         highScoreText.gameObject.SetActive(true);
         highScoreText.text = "You beat yourself! New High score is: " + PlayerPrefs.GetInt("HighScore").ToString();
-        print("Highscore");
     }
 
     private void OnEnable()
