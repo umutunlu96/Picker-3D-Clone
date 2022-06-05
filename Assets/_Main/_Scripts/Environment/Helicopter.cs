@@ -8,8 +8,9 @@ public class Helicopter : MonoBehaviour
     [Header("Propeller")]
     [SerializeField] GameObject propeller;
     [SerializeField] float rotateSpeed;
-    
+
     [Header("Helicopter")]
+    [SerializeField] Transform collectableHolder;
     [SerializeField] float duration;
     [SerializeField] Transform[] path;
 
@@ -18,11 +19,6 @@ public class Helicopter : MonoBehaviour
 
     private bool canRotate;
     private Sequence sequence;
-
-    private void Awake()
-    {
-
-    }
 
     private void MoveAlongPath()
     {
@@ -39,7 +35,7 @@ public class Helicopter : MonoBehaviour
     {
         foreach (var obj in collectables)
         {
-            obj.transform.SetParent(null);
+            obj.transform.SetParent(collectableHolder);
             obj.SetActive(true);
             yield return new WaitForSeconds(.25f);
         }
@@ -59,11 +55,14 @@ public class Helicopter : MonoBehaviour
     private void OnEnable()
     {
         canRotate = true;
-        MoveAlongPath();
+        
+        WingUpgradeTrigger.OnPlayerTakeWingUpgrade += MoveAlongPath;
     }
 
     private void OnDisable()
     {
         canRotate = false;
+
+        WingUpgradeTrigger.OnPlayerTakeWingUpgrade -= MoveAlongPath;
     }
 }

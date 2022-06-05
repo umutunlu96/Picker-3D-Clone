@@ -29,6 +29,7 @@ public class ObjectPooler : MonoBehaviour
 
     [Header("Collectables of Level-2")]
     [SerializeField] private GameObject WingUpgrade;
+    [SerializeField] private GameObject HelicopterCollectablesParent;
     [SerializeField] private GameObject[] Collectables2;
 
     [Header("Collectables of Level-3")]
@@ -128,6 +129,8 @@ public class ObjectPooler : MonoBehaviour
 
         for (int i = 0; i < Collectables2.Length; i++)
         {
+            Collectables2[i].SetActive(false);
+            Collectables2[i].transform.SetParent(HelicopterCollectablesParent.transform);
             Collectables2[i].transform.localPosition = collectables2T[i];
             Collectables2[i].GetComponent<Rigidbody>().velocity = Vector3.zero;
             Collectables2[i].transform.rotation = Quaternion.identity;

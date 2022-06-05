@@ -37,6 +37,12 @@ public class Player : MonoBehaviour
         pMovementControl.SetVerticalSpeed(1.5f);
     }
 
+    public void WaitPlayer()
+    {
+        StopPlayer();
+        Invoke("MovePlayer", 3.5f);
+    }
+
     public void EnableWings()
     {
         leftWing.SetActive(true);
@@ -56,6 +62,7 @@ public class Player : MonoBehaviour
         CollectTriggerSpot.OnPlayerEnterCollectArea += Push;
         Barrier.OnBarrierrUp += MovePlayer;
         WingUpgradeTrigger.OnPlayerTakeWingUpgrade += EnableWings;
+        WingUpgradeTrigger.OnPlayerTakeWingUpgrade += WaitPlayer;
         GameManager.OnLevelLose += StopPlayer;
     }
 
@@ -66,6 +73,7 @@ public class Player : MonoBehaviour
         CollectTriggerSpot.OnPlayerEnterCollectArea -= Push;
         Barrier.OnBarrierrUp -= MovePlayer;
         WingUpgradeTrigger.OnPlayerTakeWingUpgrade -= EnableWings;
+        WingUpgradeTrigger.OnPlayerTakeWingUpgrade -= WaitPlayer;
         GameManager.OnLevelLose -= StopPlayer;
     }
 }
