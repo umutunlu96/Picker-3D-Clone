@@ -68,8 +68,22 @@ public class UiManager : MonoBehaviour
         currentScoreText.text = ScoreManager.score.ToString();
     }
 
-    private void OpenLoseGameUi()
+    private void CloseAllPanel()
     {
+        PreGame.SetActive(false);
+        InGame.SetActive(false);
+        LoseGame.SetActive(false);
+    }
+
+    private void OpenInGamePanel()
+    {
+        CloseAllPanel();
+        InGame.SetActive(true);
+    }
+
+    private void OpenLoseGamePanel()
+    {
+        CloseAllPanel();
         LoseGame.SetActive(true);
     }
 
@@ -89,17 +103,19 @@ public class UiManager : MonoBehaviour
     {
         ProgressManager.OnProgressIncrease += SetProggress;
         ScoreManager.OnScoreUpdate += ScoreUpdate;
-        GameManager.OnLevelLose += OpenLoseGameUi;
+        GameManager.OnLevelLose += OpenLoseGamePanel;
         ScoreManager.OnHighScoreBeaten += HighScoreText;
         ScoreManager.OnHighScoreNotBeaten += ScoreText;
+        StartGameKey.OnStartButtonPressed += OpenInGamePanel;
     }
 
     private void OnDisable()
     {
         ProgressManager.OnProgressIncrease -= SetProggress;
         ScoreManager.OnScoreUpdate -= ScoreUpdate;
-        GameManager.OnLevelLose -= OpenLoseGameUi;
+        GameManager.OnLevelLose -= OpenLoseGamePanel;
         ScoreManager.OnHighScoreBeaten -= HighScoreText;
         ScoreManager.OnHighScoreNotBeaten -= ScoreText;
+        StartGameKey.OnStartButtonPressed -= OpenInGamePanel;
     }
 }

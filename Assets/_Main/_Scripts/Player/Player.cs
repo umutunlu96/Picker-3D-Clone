@@ -64,6 +64,7 @@ public class Player : MonoBehaviour
         WingUpgradeTrigger.OnPlayerTakeWingUpgrade += EnableWings;
         WingUpgradeTrigger.OnPlayerTakeWingUpgrade += WaitPlayer;
         GameManager.OnLevelLose += StopPlayer;
+        StartGameKey.OnStartButtonPressed += MovePlayer;
     }
 
     private void OnDisable()
@@ -75,5 +76,6 @@ public class Player : MonoBehaviour
         WingUpgradeTrigger.OnPlayerTakeWingUpgrade -= EnableWings;
         WingUpgradeTrigger.OnPlayerTakeWingUpgrade -= WaitPlayer;
         GameManager.OnLevelLose -= StopPlayer;
+        StartGameKey.OnStartButtonPressed -= MovePlayer;
     }
 }

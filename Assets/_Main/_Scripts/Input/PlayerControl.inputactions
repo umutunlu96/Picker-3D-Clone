@@ -50,6 +50,34 @@
                     "isPartOfComposite": true
                 }
             ]
+        },
+        {
+            "name": "StartGame",
+            "id": "a79813f3-f3c9-4f2e-a30e-a1b6eb4f7fcc",
+            "actions": [
+                {
+                    "name": "Start",
+                    "type": "Button",
+                    "id": "784f1734-07f9-4004-a800-fb5e61833541",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "1cbebfad-f5ad-480c-a974-062df27349ca",
+                    "path": "<Keyboard>/anyKey",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Start",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []
