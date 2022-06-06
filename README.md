@@ -21,10 +21,11 @@ Level Loop System (which u can play single level forever if you don't fail).
 I didn't used Unity intantiate method. All objects in the scene are recycling when triggered.
 
 
-https://user-images.githubusercontent.com/96818482/172139868-97ebbae3-3c9c-49b1-a510-bb5f5df3a518.mp4
+https://user-images.githubusercontent.com/96818482/172139877-c3d0bddb-b909-457a-b555-2b9c7711fd23.mp4
 
 **Dotween used for Helicopter movement and Barrier Movements. It's really helpfull tool that you can Invoke other methods after end of the Dotween sequence.
 
-https://user-images.githubusercontent.com/96818482/172139877-c3d0bddb-b909-457a-b555-2b9c7711fd23.mp4
+
+https://user-images.githubusercontent.com/96818482/172140540-7c89d9e2-f60d-4fa7-be29-917a86512d33.mp4
 
 **Cinemachine used for smooth camera lerp between positions.
